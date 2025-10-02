@@ -56,7 +56,7 @@ Response:
 }
 ```
 
-2.Register
+2 .Register
 
 ```
 POST /register
@@ -88,4 +88,9 @@ mvn spring-boot:run
 ```
 
 
-
+teste:
+flowchart TD
+    A[Cliente / Postman] --> B[Controller]
+    B --> C[Service]
+    C --> D[Repository]
+    D --> E[PostgreSQL Database]
