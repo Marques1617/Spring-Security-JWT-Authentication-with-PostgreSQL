@@ -2,7 +2,7 @@
 This is a Spring Boot project that implements authentication and authorization using JWT (JSON Web Tokens).
 The application connects to a PostgreSQL database to store user data and exposes REST APIs that can be tested using Postman.
 
-Features
+##Features
 
 ✅  User registration & authentication
 
@@ -16,6 +16,7 @@ Features
 
 ✅  Role-based access control
 
+
 🛠️ Technologies Used
 | Technology        | Description                       |
 |------------------|-----------------------------------|
@@ -28,7 +29,7 @@ Features
 |Postman	    | API testing                       |
 
 
-🗄  ️ Database Configuratinn (application.properties
+## 🗄  ️ Database Configuratinn (application.properties
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/YOUR_DB
 spring.datasource.username=YOUR_USER
@@ -39,7 +40,7 @@ spring.jpa.show-sql=true
 
 📬 Example Postman Usage
 
-1. # Login Request
+1. ## Login Request
 ```
 POST /login
 Content-Type: application/json
@@ -57,7 +58,7 @@ Response:
 }
 ```
 
-2.# Register
+2. ## Register
 
 ```
 POST /register
