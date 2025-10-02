@@ -2,7 +2,7 @@
 This is a Spring Boot project that implements authentication and authorization using JWT (JSON Web Tokens).
 The application connects to a PostgreSQL database to store user data and exposes REST APIs that can be tested using Postman.
 
-##Features
+## Features
 
 ✅  User registration & authentication
 
@@ -38,7 +38,7 @@ spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
 
-📬 Example Postman Usage
+## 📬 Example Postman Usage
 
 1. ### Login Request
 ```
@@ -89,28 +89,28 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6...
 mvn spring-boot:run
 ```
 
-🔗 Ligação entre Controller, Service e Repository
+### 🔗 Ligação entre Controller, Service e Repository
 
-### 1. Controller
+## 1. Controller
 
- . Camada mais externa, expõe os endpoints da API (/login, /register, /students, etc.)
+   . Camada mais externa, expõe os endpoints da API (/login, /register, /students, etc.)
 
- . Recebe requisições HTTP do cliente (Postman, browser, etc.)
+   . Recebe requisições HTTP do cliente (Postman, browser, etc.)
 
- . Chama o Service para processar a lógica de negócio
+   . Chama o Service para processar a lógica de negócio
 
-### 2. Service
+## 2. Service
 
- . Camada intermediária, contém a lógica de negócio
+   . Camada intermediária, contém a lógica de negócio
 
- . Valida dados, aplica regras, chama Repository para acessar o banco de dados
+   . Valida dados, aplica regras, chama Repository para acessar o banco de dados
  
- . Pode também gerar tokens JWT ou executar outras operações complexas
+   . Pode também gerar tokens JWT ou executar outras operações complexas
 
-### 3. Repository
+## 3. Repository
 
- . Camada mais interna, responsável por acessar o banco de dados
+   . Camada mais interna, responsável por acessar o banco de dados
 
- . Usa Spring Data JPA (JpaRepository) para CRUD
+   . Usa Spring Data JPA (JpaRepository) para CRUD
 
- . Não contém lógica de negócio — só operações de leitura/escrita no banco
+   . Não contém lógica de negócio — só operações de leitura/escrita no banco
