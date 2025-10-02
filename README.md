@@ -2,7 +2,8 @@
 This is a Spring Boot project that implements authentication and authorization using JWT (JSON Web Tokens).
 The application connects to a PostgreSQL database to store user data and exposes REST APIs that can be tested using Postman.
 
-✅ Features
+Features
+
 ✅ User registration & authentication
 ✅ JWT Token generation on login
 ✅ Stateless authentication (no session needed)
