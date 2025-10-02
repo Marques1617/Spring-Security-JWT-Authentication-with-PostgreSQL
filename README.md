@@ -4,14 +4,15 @@ The application connects to a PostgreSQL database to store user data and exposes
 
 Features
 
-✅ User registration & authentication
-✅ JWT Token generation on login
-✅ Stateless authentication (no session needed)
-✅ Custom Security Filter Chain
-✅ PostgreSQL database integration via Spring Data JPA
-✅ Role-based access control
+.  User registration & authentication
+.  JWT Token generation on login
+.  Stateless authentication (no session needed)
+.  Custom Security Filter Chain
+.  PostgreSQL database integration via Spring Data JPA
+.  Role-based access control
 
 🛠️ Technologies Used
+
 Technology	        Description
 
 Java 21	                Programming language
