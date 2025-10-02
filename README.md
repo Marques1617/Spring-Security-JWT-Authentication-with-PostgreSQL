@@ -94,3 +94,29 @@ flowchart TD
     B --> C[Service]
     C --> D[Repository]
     D --> E[PostgreSQL Database]
+
+🔗 Ligação entre Controller, Service e Repository
+
+1. Controller
+
+ . Camada mais externa, expõe os endpoints da API (/login, /register, /students, etc.)
+
+ . Recebe requisições HTTP do cliente (Postman, browser, etc.)
+
+ . Chama o Service para processar a lógica de negócio
+
+2. Service
+
+ . Camada intermediária, contém a lógica de negócio
+
+ . Valida dados, aplica regras, chama Repository para acessar o banco de dados
+ 
+ . Pode também gerar tokens JWT ou executar outras operações complexas
+
+3. Repository
+
+ . Camada mais interna, responsável por acessar o banco de dados
+
+ . Usa Spring Data JPA (JpaRepository) para CRUD
+
+ . Não contém lógica de negócio — só operações de leitura/escrita no banco
