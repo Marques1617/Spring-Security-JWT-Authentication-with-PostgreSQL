@@ -28,7 +28,7 @@ Features
 |Postman	    | API testing                       |
 
 
-🗄️ Database Configuration (application.properties
+🗄 # **️ Database Configuratio**n (application.properties
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/YOUR_DB
 spring.datasource.username=YOUR_USER
@@ -38,7 +38,8 @@ spring.jpa.show-sql=true
 ```
 
 📬 Example Postman Usage
-1. Login Request
+
+1. # ** Login Request**
 ```
 POST /login
 Content-Type: application/json
@@ -56,7 +57,7 @@ Response:
 }
 ```
 
-2 .Register
+2.# ** Register**
 
 ```
 POST /register
@@ -77,27 +78,19 @@ Response:
 }
 ```
 
-3. Access Protected Route
+3.# ** Access Protected Route**
 ```
 GET /users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6...
 ```
-▶️ Running the Project
+▶**️ Running the Projec**t
 ```
 mvn spring-boot:run
 ```
 
-
-teste:
-flowchart TD
-    A[Cliente / Postman] --> B[Controller]
-    B --> C[Service]
-    C --> D[Repository]
-    D --> E[PostgreSQL Database]
-
 🔗 Ligação entre Controller, Service e Repository
 
-1. Controller
+1. # **Controller**
 
  . Camada mais externa, expõe os endpoints da API (/login, /register, /students, etc.)
 
@@ -105,7 +98,7 @@ flowchart TD
 
  . Chama o Service para processar a lógica de negócio
 
-2. Service
+2. # **Service**
 
  . Camada intermediária, contém a lógica de negócio
 
@@ -113,7 +106,7 @@ flowchart TD
  
  . Pode também gerar tokens JWT ou executar outras operações complexas
 
-3. Repository
+3. # **Repository**
 
  . Camada mais interna, responsável por acessar o banco de dados
 
