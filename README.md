@@ -56,11 +56,34 @@ Response:
 }
 ```
 
-2. Access Protected Route
+2.Register
+
+```
+POST /register
+Content-Type: application/json
+
+{
+  "username": "manuel",
+  "password": "m123"
+}
+```
+
+Response:
+```
+{
+    "id": 8,
+    "username": "manuel",
+    "password": "$2a$12$1RExLgAzo.GlBo/Z5i84Eu5kU5WSly4kV0MbbvCLl5JmUp2ZpY/6i"
+}
+```
+
+3. Access Protected Route
 ```
 GET /users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6...
+```
 ▶️ Running the Project
+```
 mvn spring-boot:run
 ```
 
