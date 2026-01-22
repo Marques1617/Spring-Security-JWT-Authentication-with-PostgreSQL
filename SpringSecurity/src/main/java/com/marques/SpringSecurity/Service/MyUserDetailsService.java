@@ -10,7 +10,6 @@ import com.marques.SpringSecurity.Model.UserPrincipal;
 import com.marques.SpringSecurity.Model.Users;
 import com.marques.SpringSecurity.Repo.UserRepo;
 
-
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 

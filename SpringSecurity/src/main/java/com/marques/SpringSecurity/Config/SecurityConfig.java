@@ -33,14 +33,14 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http
-            .csrf(customizer -> customizer.disable()) // Desabilita a proteção CSRF (não recomendado para produção)
+            //.csrf(customizer -> customizer.disable()) // Desabilita a proteção CSRF (não recomendado para produção)
             .authorizeHttpRequests(request -> request
             .requestMatchers("register", "login")// Permite acesso sem autenticação aos endpoints /register e /login  
             .permitAll() // Permite acesso sem autenticação ao endpoint /register
             .anyRequest().authenticated()) // Exige autenticação para todas as requisições
             .httpBasic(Customizer.withDefaults()) // Habilita a autenticação HTTP Basic (Postman)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura a política de criação de sessão como STATELESS (sem estado)
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)// Aceita Basic Auth ou Aceita JWT. O primeiro que autenticar com sucesso ganha
             .build();
     }
 
@@ -66,7 +66,7 @@ public class SecurityConfig {
 
     @Bean //Create an AuthenticationProvider
     public AuthenticationProvider authenticationProvider() {
-        //needs to connect to the database, t   o get the data
+        //needs to connect to the database, to get the data
         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(new BCryptPasswordEncoder(12)); //The password in the database is hashed so we need to hash the password that the user is providing
         // to compare the two passwords

@@ -35,7 +35,6 @@ public class JWTService {
         }
     }    
     
-
     public String generateToken(String username) {
 
         Map<String, Object> claims = new HashMap<>();
@@ -74,7 +73,6 @@ public class JWTService {
                 .parseSignedClaims(token)
                 .getPayload();
     }
-
 
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
