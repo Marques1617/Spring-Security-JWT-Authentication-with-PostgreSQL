@@ -33,36 +33,16 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         return http
-            //.csrf(customizer -> customizer.disable()) // Desabilita a proteção CSRF (não recomendado para produção)
+            .csrf(customizer -> customizer.disable()) // Desabilita a proteção CSRF (não recomendado para produção)
             .authorizeHttpRequests(request -> request
-            .requestMatchers("register", "login")// Permite acesso sem autenticação aos endpoints /register e /login  
-            .permitAll() // Permite acesso sem autenticação ao endpoint /register
-            .anyRequest().authenticated()) // Exige autenticação para todas as requisições
+                .requestMatchers("register", "login")// Permite acesso sem autenticação aos endpoints /register e /login  
+                .permitAll() // Permite acesso sem autenticação ao endpoint /register
+                .anyRequest().authenticated()) // Exige autenticação para todas as requisições
             .httpBasic(Customizer.withDefaults()) // Habilita a autenticação HTTP Basic (Postman)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura a política de criação de sessão como STATELESS (sem estado)
-            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)// Aceita Basic Auth ou Aceita JWT. O primeiro que autenticar com sucesso ganha
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)// Faz primeiro o JwtFilter e depois o UserPassAuthFilter
             .build();
     }
-
-    // @Bean // returning our own userDetailsService
-    // public UserDetailsService userDetailsService() {
-
-    //     UserDetails user1 = User
-    //         .withDefaultPasswordEncoder()
-    //         .username("marques")
-    //         .password("12345")
-    //         .roles("USER")
-    //         .build();
-
-    //     UserDetails user2 = User
-    //         .withDefaultPasswordEncoder()
-    //         .username("admin")
-    //         .password("54321")
-    //         .roles("ADMIN")
-    //         .build();
-
-    //     return new InMemoryUserDetailsManager(user1, user2); // Implementação em memória do UserDetailsService 
-    // }
 
     @Bean //Create an AuthenticationProvider
     public AuthenticationProvider authenticationProvider() {
