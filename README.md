@@ -125,28 +125,28 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6...
 mvn spring-boot:run
 ```
 
-### 🔗 Ligação entre Controller, Service e Repository
+### 🔗 Connection between Controller, Service and Repository
 
 ## 1. Controller
 
-   . Camada mais externa, expõe os endpoints da API (/login, /register, /students, etc.)
+   . Outermost layer, exposes the API endpoints (/login, /register, /students, etc.)
 
-   . Recebe requisições HTTP do cliente (Postman, browser, etc.)
+   . Receives HTTP requests from the client (Postman, browser, etc.)
 
-   . Chama o Service para processar a lógica de negócio
+   . Calls the Service layer to process business logic
 
 ## 2. Service
 
-   . Camada intermediária, contém a lógica de negócio
+   . Intermediate layer that contains the business logic
 
-   . Valida dados, aplica regras, chama Repository para acessar o banco de dados
+   . Validates data, applies rules, and calls the Repository to access the database
  
    . Pode também gerar tokens JWT ou executar outras operações complexas
 
 ## 3. Repository
 
-   . Camada mais interna, responsável por acessar o banco de dados
+   . Innermost layer, responsible for accessing the database
 
-   . Usa Spring Data JPA (JpaRepository) para CRUD
+   . Uses Spring Data JPA (JpaRepository) to perform CRUD operations
 
-   . Não contém lógica de negócio — só operações de leitura/escrita no banco
+   . Does not contain business logic — only database read/write operations
