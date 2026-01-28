@@ -39,7 +39,7 @@ spring.datasource.password=YOUR_PASSWORD
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
-##Docker-compose-yml
+## Docker-compose-yml
 ```
 services:
   db:
@@ -68,7 +68,7 @@ volumes:
 ▶**️ Running the docker File
 ```docker compose up -d```
 
-▶* A*️ccess the database 
+▶** ️ Access the Container
 ```docker exec -it <name_container> bash```
 
 ## 📬 Example Postman Usage

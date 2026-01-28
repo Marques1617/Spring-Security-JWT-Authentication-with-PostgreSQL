@@ -1,10 +1,10 @@
 services:
   db:
-    container_name: spring-boot-jwt
+    container_name: <your_container_name>
     image: postgres:latest
     environment:
-      POSTGRES_USER: joao
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: <YOUR_USER>
+      POSTGRES_PASSWORD: <YOUR_PASSWORD>
       PGDATA: /data/postgres
     volumes:
       - db:/data/postgres
