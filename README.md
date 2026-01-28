@@ -1,6 +1,6 @@
 # Spring-Security-JWT-Authentication-with-PostgreSQL
 This is a Spring Boot project that implements authentication and authorization using JWT (JSON Web Tokens).
-The application connects to a PostgreSQL database to store user data and exposes REST APIs that can be tested using Postman.
+The application connects to a PostgreSQL database running inside a Docker container to store user data and exposes REST APIs that can be tested using Postman.
 
 ## Features
 
@@ -65,10 +65,13 @@ volumes:
   db:
 
 ```
-▶**️ Running the docker File
+
+## Running the docker file
+
 ```docker compose up -d```
 
-▶** ️ Access the Container
+## ️ Access the Container
+
 ```docker exec -it <name_container> bash```
 
 ## 📬 Example Postman Usage
