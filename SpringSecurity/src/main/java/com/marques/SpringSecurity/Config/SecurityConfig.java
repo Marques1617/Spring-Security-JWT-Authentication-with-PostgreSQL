@@ -19,8 +19,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.marques.SpringSecurity.Config.Filter.JwtFilter;
 
-@Configuration // Marca a classe como uma classe de configuração do Spring
-@EnableWebSecurity //-> Habilita a configuração de segurança web do Spring Security
+@Configuration // -> (Tells spring that this is a class of Configuration)
+@EnableWebSecurity //-> (Tells the spring that this class provides Spring Security configuration and enables customization of the security behavior according to the developer’s requirements)
+// For example, it allows the use of specific security configuration objects, such as SecurityFilterChain
 public class SecurityConfig {
 
     @Autowired
@@ -36,7 +37,7 @@ public class SecurityConfig {
             .csrf(customizer -> customizer.disable()) // Desabilita a proteção CSRF (não recomendado para produção)
             .authorizeHttpRequests(request -> request
                 .requestMatchers("register", "login")// Permite acesso sem autenticação aos endpoints /register e /login  
-                .permitAll() // Permite acesso sem autenticação ao endpoint /register
+                .permitAll() // Permite acesso sem autenticação ao endpoint /register e /login
                 .anyRequest().authenticated()) // Exige autenticação para todas as requisições
             .httpBasic(Customizer.withDefaults()) // Habilita a autenticação HTTP Basic (Postman)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Configura a política de criação de sessão como STATELESS (sem estado)
@@ -45,12 +46,14 @@ public class SecurityConfig {
     }
 
     @Bean //Create an AuthenticationProvider
-    public AuthenticationProvider authenticationProvider() {
+    public AuthenticationProvider authenticationProvider() { // It receives an Un-authenticated Object (e.g.login,register),it verifies the credentials to see if they are valid 
+        //if valid, it returns an authenticated Authentication object with authorities.”
+        
         //needs to connect to the database, to get the data
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+         DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setPasswordEncoder(new BCryptPasswordEncoder(12)); //The password in the database is hashed so we need to hash the password that the user is providing
-        // to compare the two passwords
-        provider.setUserDetailsService(userDetailsService);
+        // to compare the two passwords. So the authentication provider knows how manage tha password to compara between the two (login form and the database )
+        provider.setUserDetailsService(userDetailsService); //My own UserDetailedService (i create the MyUserDetailsService)
         return provider; 
     }
 
@@ -60,3 +63,4 @@ public class SecurityConfig {
     }
     
 }
+ 

@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public class UserPrincipal implements UserDetails {
 
-
     private Users user;
 
     public UserPrincipal(Users user) {
@@ -35,6 +34,7 @@ public class UserPrincipal implements UserDetails {
     public boolean isAccountNonExpired() {
         return true;
     }
+    
     @Override
     public boolean isAccountNonLocked() {
         return true;

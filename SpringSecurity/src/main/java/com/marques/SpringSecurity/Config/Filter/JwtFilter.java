@@ -1,4 +1,4 @@
-package com.marques.SpringSecurity.Config.Filter;
+ package com.marques.SpringSecurity.Config.Filter;
 
 import java.io.IOException;
 
@@ -53,7 +53,5 @@ public class JwtFilter extends OncePerRequestFilter{
         }
 
         filterChain.doFilter(request, response);
-
     }
-    
 }

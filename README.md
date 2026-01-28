@@ -24,12 +24,14 @@ The application connects to a PostgreSQL database to store user data and exposes
 | Spring Boot 3.5.6 | Application framework             |
 | Spring Security   | Authentication & Authorization    |
 | JWT               | Token-based authentication        |
-| PostgreSQL	    | Database                          |
+| Docker	    | Database                          |
 | Maven		    | Dependency management             |
 |Postman	    | API testing                       |
 
 
-## 🗄  ️ Database Configuratonn (application.propertie)
+## 🗄  ️ Database Configuraionn
+
+### Application.properties
 ```properties
 spring.datasource.url=jdbc:postgresql://localhost:5432/YOUR_DB
 spring.datasource.username=YOUR_USER
@@ -37,6 +39,37 @@ spring.datasource.password=YOUR_PASSWORD
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
 ```
+##Docker-compose-yml
+```
+services:
+  db:
+    container_name: <YOUR_CONTAINER_NAME>
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: <YOUR_USER>
+      POSTGRES_PASSWORD: <YOUR_PASSWORD>
+      PGDATA: /data/postgres
+    volumes:
+      - db:/data/postgres
+    ports:
+      - "5332:5432"
+    networks:
+      - db
+    restart: unless-stopped
+  
+networks:
+  db:
+    driver: bridge
+
+volumes:
+  db:
+
+```
+▶**️ Running the docker File
+```docker compose up -d```
+
+▶* A*️ccess the database 
+```docker exec -it <name_container> bash```
 
 ## 📬 Example Postman Usage
 

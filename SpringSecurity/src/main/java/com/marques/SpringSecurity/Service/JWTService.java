@@ -22,13 +22,13 @@ import io.jsonwebtoken.io.Decoders;
 public class JWTService {
 
     private String secretKey = "";
-
+ 
     public JWTService(){
 
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
-            SecretKey secretKey = keyGen.generateKey();
-            this.secretKey = Base64.getEncoder().encodeToString(secretKey.getEncoded());
+            SecretKey secretKeyAux = keyGen.generateKey();
+            this.secretKey = Base64.getEncoder().encodeToString(secretKeyAux.getEncoded());
             System.out.println("Generated Secret Key: " + this.secretKey);
         } catch (Exception e) {
             e.printStackTrace();
@@ -40,21 +40,20 @@ public class JWTService {
         Map<String, Object> claims = new HashMap<>();
 
         return Jwts.builder()
-                .claims()
-                .add(claims)
-                .subject(username)
-                .issuedAt(new Date(System.currentTimeMillis())) 
-                .expiration(new Date(System.currentTimeMillis() + 30 * 60 * 1000)) // Token válido por 30 minutos
-                .and()
-                .signWith(getKey())
-                .compact();
+                    .claims()
+                        .add(claims)
+                        .subject(username)
+                        .issuedAt(new Date(System.currentTimeMillis())) 
+                        .expiration(new Date(System.currentTimeMillis() + 30 * 60 * 1000)) // Token válido por 30 minutos
+                    .and()
+                    .signWith(getKey())
+                    .compact();
     }
 
     private SecretKey getKey() {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);

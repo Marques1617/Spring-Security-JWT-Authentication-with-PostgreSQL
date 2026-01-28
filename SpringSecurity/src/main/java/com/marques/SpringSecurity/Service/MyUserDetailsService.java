@@ -10,7 +10,7 @@ import com.marques.SpringSecurity.Model.UserPrincipal;
 import com.marques.SpringSecurity.Model.Users;
 import com.marques.SpringSecurity.Repo.UserRepo;
 
-@Service
+@Service //Implementing my own UserDetailService without using the default one
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
@@ -28,7 +28,7 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
 
-        return new UserPrincipal(user);
+        return new UserPrincipal(user); //To return an object that is UserDetails, it is obligated to create a class that contains the interface UserDertails 
     }
            
 }
