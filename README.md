@@ -29,7 +29,7 @@ The application connects to a PostgreSQL database running inside a Docker contai
 |Postman	    | API testing                       |
 
 
-## 🗄  ️ Database Configuraionn
+## 🗄  ️ Database Configuration
 
 ### Application.properties
 ```properties
